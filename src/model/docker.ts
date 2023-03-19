@@ -112,6 +112,7 @@ const Docker = {
                 --env RUNNER_WORKSPACE \
                 --env GIT_PRIVATE_TOKEN="${gitPrivateToken}" \
                 --env CHOWN_FILES_TO="${chownFilesTo}" \
+                --shm-size=128m \
                 ${sshAgent ? '--env SSH_AUTH_SOCK=/ssh-agent' : ''} \
                 --volume "${githubHome}:/root:z" \
                 --volume "${githubWorkflow}:/github/workflow:z" \
@@ -191,6 +192,7 @@ const Docker = {
                 --env RUNNER_WORKSPACE \
                 --env GIT_PRIVATE_TOKEN="${gitPrivateToken}" \
                 --env CHOWN_FILES_TO="${chownFilesTo}" \
+                --shm-size=128m \
                 ${sshAgent ? '--env SSH_AUTH_SOCK=c:/ssh-agent' : ''} \
                 --volume "${githubHome}":"c:/root" \
                 --volume "${githubWorkflow}":"c:/github/workflow" \
