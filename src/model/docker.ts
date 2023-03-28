@@ -114,12 +114,12 @@ const Docker = {
                 --env CHOWN_FILES_TO="${chownFilesTo}" \
                 --shm-size=128m \
                 ${sshAgent ? '--env SSH_AUTH_SOCK=/ssh-agent' : ''} \
-                --volume "${githubHome}:/root:z" \
-                --volume "${githubWorkflow}:/github/workflow:z" \
-                --volume "${workspace}:/github/workspace:z" \
-                --volume "${actionFolder}/steps:/steps:z" \
-                --volume "${actionFolder}/entrypoint.sh:/entrypoint.sh:z" \
-                --volume "${actionFolder}/unity-config:/usr/share/unity3d/config/:z" \
+                --volume "${githubHome}:/root:delegated,z" \
+                --volume "${githubWorkflow}:/github/workflow:delegated,z" \
+                --volume "${workspace}:/github/workspace:delegated,z" \
+                --volume "${actionFolder}/steps:/steps:delegated,z" \
+                --volume "${actionFolder}/entrypoint.sh:/entrypoint.sh:delegated,z" \
+                --volume "${actionFolder}/unity-config:/usr/share/unity3d/config/:delegated,z" \
                 ${sshAgent ? `--volume ${sshAgent}:/ssh-agent` : ''} \
                 ${
                   sshAgent ? `--volume /home/runner/.ssh/known_hosts:/root/.ssh/known_hosts:ro` : ''
